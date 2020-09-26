@@ -19,7 +19,9 @@ _cgo_export.*
 
 _testmain.go
 
+
+# Don't include our binary
 *.exe
 *.test
 *.prof
-
+*.com
