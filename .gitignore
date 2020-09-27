@@ -27,3 +27,5 @@ runner-build.exe*
 *.test
 *.prof
 *.com
+
+tmp
