@@ -22,7 +22,7 @@ _testmain.go
 
 # Don't include our binary
 *.exe
-runner-build.exe*
+runner-build.exe~
 *.exe~
 *.test
 *.prof
