@@ -22,6 +22,7 @@ _testmain.go
 
 # Don't include our binary
 *.exe
+*.exe~
 *.test
 *.prof
 *.com
