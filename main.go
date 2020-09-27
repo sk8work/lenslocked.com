@@ -12,8 +12,9 @@ func main() {
 }
 
 func handlerFunc(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "text/html")
 	fmt.Println("Someone visited our page")
 	fmt.Fprint(w, "<h1>Welcome to my super duper site</h1>")
 }
 
-// video 5
+// video 6
