@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
+
+	template.New("blah")
 
 	r := mux.NewRouter()
 
@@ -19,7 +22,7 @@ func main() {
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-Type", "text/html")
-	fmt.Fprint(w, "<h1>Welcome to my super site</h1>")
+	fmt.Fprint(w, "<h1>Welcome to my super site!</h1>")
 }
 
 func contact(w http.ResponseWriter, r *http.Request) {
@@ -27,4 +30,4 @@ func contact(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "To get in touch? please send an email to <a href=\"mailto:support@lenslocked.com\">support@lenslocked.com</a>")
 }
 
-// video 9
+// video 21
