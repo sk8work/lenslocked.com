@@ -1,14 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
-var homeTemplate *template.Template
+var (
+	homeTemplate    *template.Template
+	contactTemplate *template.Template
+)
 
 func main() {
 
@@ -17,7 +19,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
+	contactTemplate, err = template.ParseFiles("views/contact.gohtml")
+	if err != nil {
+		panic(err)
+	}
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", home)
@@ -35,7 +40,9 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 func contact(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-Type", "text/html")
-	fmt.Fprint(w, "To get in touch? please send an email to <a href=\"mailto:support@lenslocked.com\">support@lenslocked.com</a>")
+	if err := contactTemplate.Execute(w, nil); err != nil {
+		panic(err)
+	}
 }
 
 // video 28
