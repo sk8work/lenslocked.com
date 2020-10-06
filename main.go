@@ -8,9 +8,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
+var homeTemplate *template.Template
+
 func main() {
 
-	template.New("blah")
+	var err error
+	homeTemplate, err = template.ParseFiles("views/home.gohtml")
+	if err != nil {
+		panic(err)
+	}
 
 	r := mux.NewRouter()
 
@@ -22,7 +28,9 @@ func main() {
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-Type", "text/html")
-	fmt.Fprint(w, "<h1>Welcome to my super site!</h1>")
+	if err := homeTemplate.Execute(w, nil); err != nil {
+		panic(err)
+	}
 }
 
 func contact(w http.ResponseWriter, r *http.Request) {
@@ -30,4 +38,4 @@ func contact(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "To get in touch? please send an email to <a href=\"mailto:support@lenslocked.com\">support@lenslocked.com</a>")
 }
 
-// video 21
+// video 28
