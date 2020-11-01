@@ -6,14 +6,10 @@ import (
 )
 
 type User struct {
-	Name  string
-	Age   int
-	Dog   Dog
-	Slice []string
-}
-
-type Dog struct {
-	Name string
+	Name    string
+	Age     int
+	Work    bool
+	DogName string
 }
 
 func main() {
@@ -22,18 +18,18 @@ func main() {
 		panic(err)
 	}
 
-	data := User{
-		Name: "John Smith",
-		Age:  35,
-		Dog: Dog{
-			Name: "Jarsy",
-		},
-		Slice: []string{"qwe", "adf"},
-	}
+	data := User{}
+	// data := User{
+	// 	Name: "John Smith",
+	// 	DogName :=
+	// }
+	data.Name = "John Smith"
+	data.Age = 35
+	data.Work = true
+	data.DogName = "Buddy"
 
 	err = t.Execute(os.Stdout, data)
 	if err != nil {
 		panic(err)
 	}
-
 }
