@@ -49,16 +49,15 @@ func main() {
 	faqView = views.NewView("bootstrap", "views/faq.gohtml")
 	notfoundView = views.NewView("bootstrap", "views/404.gohtml")
 	usersC := controllers.NewUsers()
-	// usersC := controllers.NewUsers()
 
 	r := mux.NewRouter()
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	r.HandleFunc("/", home).Methods("GET")
 	r.HandleFunc("/contact", contact).Methods("GET")
 	r.HandleFunc("/faq", faq).Methods("GET")
-	r.HandleFunc("/signup", usersC.New)
-
+	r.HandleFunc("/signup", usersC.New).Methods("GET")
+	r.HandleFunc("/signup", usersC.Create).Methods("POST")
 	http.ListenAndServe(":8080", r)
 }
 
-// lesson 43
+// lesson 44
